@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bài tập 22 - Form đăng ký</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/script.js" defer></script>
+</head>
+<body>
+<header><div class="wrap"><h1>Website học tập</h1><p>Đề thi Kết thúc học phần</p>
+<nav aria-label="Menu chính">
+  <a href="index.html">Trang chủ</a>
+  <a href="lythuyet.html">Trả lời lý thuyết</a>
+  <a href="baitap23.html">Bài tập 23</a>
+  <a href="baitap22.html">Bài tập 22</a>
+  <a href="diemdanh.html">Thông tin điểm danh</a>
+  <a href="about.html">Giới thiệu</a>
+  <a href="contact.html">Liên hệ</a>
+</nav>
+</div></header>
+<main>
+<section class="card">
+<h2>Bài tập 22: Form đăng ký</h2>
+<p>Nhập thông tin để kiểm tra email, mật khẩu và điều khoản. Ví dụ này chỉ lưu tên và email vào LocalStorage; không lưu mật khẩu.</p>
+<form id="registerForm">
+  <label for="name">Họ và tên</label><input id="name" required>
+  <label for="email">Email</label><input id="email" type="email" required>
+  <label for="password">Mật khẩu</label><input id="password" type="password" required>
+  <label><input id="agree" type="checkbox" required> Tôi đồng ý điều khoản</label>
+  <p><button class="button" type="submit">Đăng ký</button></p>
+</form>
+<p id="message" role="status"></p>
+</section>
+<script>
+const form = document.getElementById("registerForm");
+const message = document.getElementById("message");
+form.addEventListener("submit", function(event) {
+  event.preventDefault();
+  const name = document.getElementById("name").value.trim();
+  const email = document.getElementById("email").value.trim();
+  const password = document.getElementById("password").value;
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/;
+  if (!name) { message.textContent = "Vui lòng nhập họ tên."; return; }
+  if (!emailRegex.test(email)) { message.textContent = "Email không hợp lệ."; return; }
+  if (!passwordRegex.test(password)) { message.textContent = "Mật khẩu cần ít nhất 8 ký tự, gồm chữ hoa, chữ thường và số."; return; }
+  if (!document.getElementById("agree").checked) { message.textContent = "Bạn cần đồng ý điều khoản."; return; }
+  try {
+    localStorage.setItem("registeredUser", JSON.stringify({name, email}));
+    message.textContent = "Đăng ký thành công! Tên và email đã được lưu.";
+    form.reset();
+  } catch (e) {
+    message.textContent = "Không thể lưu dữ liệu trên trình duyệt này.";
+  }
+});
+</script>
+</main>
+<footer><div class="wrap">© <span data-year></span> - 701-MSSV</div></footer>
+</body>
+</html>

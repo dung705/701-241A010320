@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trả lời lý thuyết</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/script.js" defer></script>
+</head>
+<body>
+<header><div class="wrap"><h1>Website học tập</h1><p>Đề thi Kết thúc học phần</p>
+<nav aria-label="Menu chính">
+  <a href="index.html">Trang chủ</a>
+  <a href="lythuyet.html">Trả lời lý thuyết</a>
+  <a href="baitap23.html">Bài tập 23</a>
+  <a href="baitap22.html">Bài tập 22</a>
+  <a href="diemdanh.html">Thông tin điểm danh</a>
+  <a href="about.html">Giới thiệu</a>
+  <a href="contact.html">Liên hệ</a>
+</nav>
+</div></header>
+<main>
+<section class="card">
+<h2>Trả lời lý thuyết</h2>
+<h3>1. So sánh position: relative và absolute</h3>
+<p>Trong CSS, thuộc tính position dùng để xác định vị trí của một phần tử trên trang web. Hai giá trị relative và absolute có cách hoạt động khác nhau.
+a. position: relative 
+Phần tử được dịch chuyển so với vị trí ban đầu của chính nó.
+Phần tử vẫn giữ chỗ trong bố cục trang web.
+Thường dùng để điều chỉnh vị trí hoặc làm phần tử cha cho các phần tử absolute
+b. position: absolute 
+Phần tử được định vị theo phần tử cha gần nhất có position khác static. Nếu không có, nó thường được định vị theo khung chứa ban đầu của trang.
+Phần tử bị đưa ra khỏi luồng bố cục thông thường, nên không giữ chỗ ban đầu.
+Thường dùng để đặt biểu tượng, nhãn thông báo hoặc chữ lên trên hình ảnh.
+Ví dụ sử dụng trong layout responsive:
+Sử dụng relative
+Dùng cho khung chứa ảnh sản phẩm hoặc thẻ nội dung. Khung vẫn nằm trong bố cục và có thể co giãn theo màn hình.
+.card {
+  position: relative;
+  width: 100%;
+}
+Sử dụng absolute
+Dùng cho nhãn giảm giá, nút đóng hoặc biểu tượng nằm trên ảnh. Phần tử được đặt tại vị trí mong muốn trong khung chứa.
+.sale {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+}
+Ảnh hưởng khi deploy website lên hosting
+Deploy là quá trình đưa website lên máy chủ hosting để người dùng có thể truy cập qua Internet.
+Tương thích thiết bị: relative và absolute đều hoạt động trên các trình duyệt hiện đại. Tuy nhiên, nếu dùng absolute với tọa độ cố định quá nhiều, nội dung có thể chồng lên nhau trên điện thoại.
+Hiển thị đúng bố cục: Nên dùng Flexbox, Grid hoặc kích thước linh hoạt để sắp xếp nội dung; dùng absolute cho các thành phần cần chồng lớp.
+Kiểm tra trước khi deploy: Thử website trên máy tính, máy tính bảng và điện thoại; kiểm tra ảnh, chữ, nút bấm và hiện tượng tràn màn hình.
+Hosting không quyết định cách định vị: Hosting chủ yếu lưu trữ và phân phối các tệp HTML, CSS, JavaScript. Nếu CSS được viết đúng, website sẽ hiển thị tương tự khi chạy trên máy cá nhân và khi deploy. Lỗi đường dẫn tệp hoặc thiếu tệp CSS vẫn có thể khiến giao diện hiển thị sai.
+</p>
+<h3>2. Domain, hosting và DNS</h3>
+<p>1.	Tạo website: Viết các tệp HTML, CSS và JavaScript.
+2.	Đăng ký domain: Chọn và mua tên miền tại nhà cung cấp.
+3.	Chọn hosting: Tải code lên dịch vụ lưu trữ website.
+4.	Cấu hình DNS: Trỏ tên miền đến hosting để người dùng truy cập website.
+5.	Kiểm tra: Bật HTTPS và kiểm tra website trên máy tính, điện thoại.
+Vai trò của DNS
+DNS giúp chuyển đổi tên miền (ví dụ: example.com) thành địa chỉ máy chủ để trình duyệt tìm thấy website.
+Công cụ deploy không cần server riêng:
+GitHub Pages, Netlify
+Rủi ro bảo mật
+Không dùng HTTPS có thể khiến dữ liệu truyền tải bị đánh cắp.
+Cấu hình DNS sai có thể khiến website không truy cập được hoặc bị chuyển hướng.
+Để lộ API key, mật khẩu trong JavaScript có thể khiến thông tin bị đánh cắp.
+</p>
+<h3>3. So sánh var, let và const</h3>
+<p>var: Có phạm vi trong hàm (function scope), được hoisting và khởi tạo giá trị undefined. Có thể khai báo lại và gán lại giá trị.
+let: Có phạm vi trong khối lệnh {} (block scope), được hoisting nhưng không thể truy cập trước khi khai báo. Có thể gán lại nhưng không thể khai báo lại trong cùng scope.
+const: Có phạm vi trong khối lệnh {} (block scope), được hoisting nhưng không thể truy cập trước khi khai báo. Không thể khai báo lại hoặc gán lại giá trị.
+Ví dụ:
+console.log(b);
+let b = 20;
+Giải thích: Code gây lỗi ReferenceError vì biến b được sử dụng trước khi khai báo.
+Cách debug bằng Chrome DevTools
+Nhấn F12 để mở Chrome DevTools.
+Chọn Console để xem thông báo lỗi.
+Chọn Sources, đặt breakpoint tại dòng lỗi.
+Chạy lại code và kiểm tra giá trị biến trong mục Scope.
+</p>
+<h3>4. Event Delegation</h3>
+<p>Event Delegation là kỹ thuật gắn một sự kiện vào phần tử cha để xử lý sự kiện phát sinh từ các phần tử con, thay vì gắn sự kiện cho từng phần tử con.
+Ví dụ xử lý danh sách động
+<ul id="list">
+    <li>HTML</li>
+    <li>CSS</li>
+    <li>JavaScript</li>
+</ul>
+<button onclick="addItem()">Thêm mục</button>
+<script>
+const list = document.getElementById("list");
+list.addEventListener("click", function(event) {
+    if (event.target.tagName === "LI") {
+        alert(event.target.textContent);
+    }
+});
+function addItem() {
+    const li = document.createElement("li");
+    li.textContent = "Mục mới";
+    list.appendChild(li);
+}
+</script>
+Khi nhấn vào một mục, sự kiện được xử lý bởi phần tử cha ul.
+Khi thêm mục mới, mục đó vẫn hoạt động mà không cần đăng ký sự kiện riêng.
+Lợi ích khi kết hợp HTML/CSS
+HTML: Tạo cấu trúc danh sách rõ ràng.
+CSS: Trang trí danh sách, tạo hiệu ứng khi người dùng nhấn vào mục.
+JavaScript: Xử lý sự kiện tập trung tại phần tử cha, giảm số lượng trình xử lý sự kiện.
+Hiệu suất: Tiết kiệm tài nguyên khi danh sách có nhiều phần tử và dễ quản lý danh sách động.
+</p>
+</main>
+<footer><div class="wrap">© <span data-year></span> - 701-MSSV</div></footer>
+</body>
+</html>
